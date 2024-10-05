@@ -1,0 +1,11 @@
+@page "/UrlParameter/catch-all/{*PageParameters}"
+
+<h3>URLパラメータの取得（全取得）</h3>
+
+<p>URLのパラメータ：@PageParameters</p>
+
+@code
+{
+    [Parameter]
+    public string PageParameters { get; set; } = "";
+}

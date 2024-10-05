@@ -1,0 +1,16 @@
+@page "/NavigationManager"
+@rendermode InteractiveServer
+
+@inject NavigationManager navigationManager
+
+<h3>プログラムによる画面遷移</h3>
+
+<input type="button" @onclick="buttonClick" value="メニューに戻る" />
+
+@code
+{
+    private void buttonClick()
+    {
+        navigationManager.NavigateTo("/");
+    }
+}

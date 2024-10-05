@@ -1,0 +1,19 @@
+@page "/UIComponentEventFromCode"
+@rendermode InteractiveServer
+
+@using BlazorSample.Components.Shared
+
+<h3>自作のUIコンポーネントを利用する（子がイベントを処理してから返す）</h3>
+
+<MyButtonEventFromCode Text="検索する" OnClickCallback="MyButton_Click" />
+<MyLabel Text="@labelText" />
+
+@code
+{
+    private string labelText { get; set; } = "ボタンをクリックしてください";
+
+    private void MyButton_Click()
+    {
+        labelText = "ボタンが押されました";
+    }
+}

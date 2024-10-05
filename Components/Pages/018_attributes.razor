@@ -1,0 +1,34 @@
+@page "/attributes"
+@rendermode InteractiveServer
+
+<h3>HTML属性の一括設定（属性スプラッティング）</h3>
+
+<input type="text" @attributes="InputAttributes" />
+<button @onclick="UpdateAttributes">属性変更</button>
+
+@code
+{
+    private Dictionary<string, object> InputAttributes { get; set; } = new()
+    {
+        { "maxlength", "10" },
+        { "placeholder", "Input placeholder text" },
+        { "required", "required" },
+        { "size", "50" }
+    };
+
+    private void UpdateAttributes()
+    {
+        InputAttributes = new()
+        {
+            { "maxlength", "15" },
+            { "placeholder", "Input!!" },
+            { "required", "required" },
+            { "size", "75" }
+        };
+    }
+}
+
+@* 
+ASP.NET Core Blazor 属性スプラッティングと任意のパラメーター
+https://learn.microsoft.com/ja-jp/aspnet/core/blazor/components/splat-attributes-and-arbitrary-parameters?view=aspnetcore-8.0
+*@

@@ -1,0 +1,17 @@
+@page "/checkbox"
+@rendermode InteractiveServer
+
+<h3>チェックボックスからデータを取得する</h3>
+
+<input id="mycheckbox" type="checkbox" @bind="isChecked" />
+<label for="mycheckbox">添付資料の有無</label>
+<p>@(isChecked ? "あり" : "なし")</p>
+
+<h3>チェックボックスへデータを反映する</h3>
+<input id="mycheckbox2" type="checkbox" @bind="isChecked" disabled />
+<label for="mycheckbox2">確認有無</label>
+
+@code
+{
+    private bool isChecked { get; set; } = false;
+}

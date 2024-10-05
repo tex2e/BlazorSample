@@ -1,0 +1,20 @@
+@page "/asynceventhandler"
+@rendermode InteractiveServer
+
+<h3>非同期でイベントハンドラを実行する</h3>
+
+<button @onclick="SetMessage">メッセージ表示</button>
+
+<p>メッセージ：@Message</p>
+
+@code
+{
+    private string Message { get; set; } = "";
+
+    private async Task SetMessage()
+    {
+        Message = $"読み込み中... ({DateTime.Now})";
+        await Task.Delay(3000);
+        Message = $"読み込み完了！ ({DateTime.Now})";
+    }
+}

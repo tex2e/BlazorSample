@@ -1,0 +1,16 @@
+@page "/UrlParameter/Constraints/{UserId:int}"
+@page "/UrlParameter/Constraints/{UserId:int}/{HistoryId:int}"
+
+<h3>URLパラメータの取得（型制約あり）</h3>
+
+<p>ユーザーID：@UserId</p>
+<p>履歴番号：@HistoryId</p>
+
+@code
+{
+    [Parameter]
+    public int UserId { get; set; }
+
+    [Parameter]
+    public int HistoryId { get; set; }
+}

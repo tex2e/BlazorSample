@@ -1,0 +1,14 @@
+@page "/CascadingParameter"
+
+@using BlazorSample.Components.Shared
+
+<h3>複数のUIコンポーネントをまたいでパラメータを渡す（カスケーディングパラメーター）</h3>
+
+<CascadingValue Value="Message">
+    <MyCascadingParameterChild />
+</CascadingValue>
+
+@code
+{
+    private string Message { get; set; } = "Hello!";
+}

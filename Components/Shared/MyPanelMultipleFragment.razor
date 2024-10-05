@@ -1,0 +1,18 @@
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">@Title</h4>
+    <p>@ChildContent1</p>
+    <hr />
+    <p>@ChildContent2</p>
+</div>
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment? ChildContent1 { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent2 { get; set; }
+}

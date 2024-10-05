@@ -1,0 +1,34 @@
+@page "/UrlParameter/Validation/{UserId}"
+@rendermode InteractiveServer
+
+@using System.Text.RegularExpressions
+
+<h3>URLパラメータの取得（入力チェックあり）</h3>
+
+<div class="@(ErrorMessages.Count == 0 ? "visually-hidden" : "")">
+    <div class="alert alert-danger" role="alert">
+        @foreach (string message in ErrorMessages)
+        {
+            <div>@message</div>
+        }
+    </div>
+</div>
+
+<p>ユーザーID：@UserId</p>
+
+@code
+{
+    private List<string> ErrorMessages { get; set; } = new List<string>();
+
+    [Parameter]
+    public string UserId { get; set; } = "";
+
+    protected override void OnParametersSet()
+    {
+        if (String.IsNullOrEmpty(UserId)
+            || Regex.IsMatch(UserId, @"^[a-zA-Z]+[a-zA-Z0-9]*$") == false)
+        {
+            ErrorMessages.Add("不正なユーザーIDです！");
+        }
+    }
+}

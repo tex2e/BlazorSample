@@ -1,0 +1,10 @@
+@page "/onewaydatabinding"
+
+<h3>一方向データバインディング</h3>
+
+<p>@CurrentTime</p>
+
+@code
+{
+    private string CurrentTime = $"現在の時刻は {DateTime.Now} です。";
+}

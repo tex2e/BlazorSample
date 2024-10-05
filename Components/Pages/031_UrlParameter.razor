@@ -1,0 +1,16 @@
+@page "/UrlParameter/{UserId}"
+@page "/UrlParameter/{UserId}/{HistoryId}"
+
+<h3>URLパラメータの取得</h3>
+
+<p>ユーザーID：@UserId</p>
+<p>履歴番号：@HistoryId</p>
+
+@code
+{
+    [Parameter]
+    public string UserId { get; set; } = "";
+
+    [Parameter]
+    public string HistoryId { get; set; } = "";
+}

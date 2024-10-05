@@ -1,0 +1,20 @@
+@page "/eventhandlerwithargs"
+@rendermode InteractiveServer
+
+<h3>イベントハンドラに引数を渡す</h3>
+
+<button @onclick="@(e => SetMessage("こんにちは"))">メッセージ1表示</button>
+<button @onclick="@(e => SetMessage("Hello"))">メッセージ2表示</button>
+<button @onclick="@(e => SetMessage("你好"))">メッセージ3表示</button>
+
+<p>メッセージ：@Message</p>
+
+@code
+{
+    private string Message { get; set; } = "";
+
+    private void SetMessage(string message)
+    {
+        Message = message;
+    }
+}

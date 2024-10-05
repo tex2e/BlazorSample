@@ -1,0 +1,43 @@
+@page "/if"
+
+@using BlazorSample.Models
+
+<h3>foreachで一覧を表示する</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品名</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            @if (product.IsActive)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code
+{
+    private List<Product> products = new List<Product>()
+        {
+            new Product() { Id = 1, Name = "Product1", IsActive = true },
+            new Product() { Id = 2, Name = "Product2", IsActive = false },
+            new Product() { Id = 3, Name = "Product3", IsActive = true },
+        };
+
+    private string selectedProductName = "";
+
+    private void AddCart(Product product)
+    {
+        selectedProductName = product.Name;
+    }
+}

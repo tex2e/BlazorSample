@@ -1,0 +1,14 @@
+@page "/MultipleRenderFragment"
+
+@using BlazorSample.Components.Shared
+
+<h3>子コンポーネントのタグ内に複数のHTMLを指定して描画させる</h3>
+
+<MyPanelMultipleFragment Title="テストタイトル">
+    <ChildContent1>
+        1つ目の文章
+    </ChildContent1>
+    <ChildContent2>
+        2つ目の文章
+    </ChildContent2>
+</MyPanelMultipleFragment>

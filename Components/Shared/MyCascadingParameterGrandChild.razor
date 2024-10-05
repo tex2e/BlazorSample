@@ -1,0 +1,9 @@
+<div class="alert alert-primary cascading-parameter-grandchild">
+    <p>メッセージ：@MessageForGrandChild</p>
+</div>
+
+@code
+{
+    [CascadingParameter]
+    public string MessageForGrandChild { get; set; } = "";
+}

@@ -1,0 +1,45 @@
+@page "/foreach"
+@rendermode InteractiveServer
+
+@using BlazorSample.Models
+
+<h3>foreachで一覧を表示する</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品名</th>
+            <th>選択</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td><button @onclick="() => AddCart(product)">カードに追加</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>選択した商品名：@selectedProductName</p>
+
+@code
+{
+    private List<Product> products = new List<Product>()
+        {
+            new Product() { Id = 1, Name = "Product1" },
+            new Product() { Id = 2, Name = "Product2" },
+            new Product() { Id = 3, Name = "Product3" },
+        };
+
+    private string selectedProductName = "";
+
+    private void AddCart(Product product)
+    {
+        selectedProductName = product.Name;
+    }
+}

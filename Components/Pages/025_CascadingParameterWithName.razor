@@ -1,0 +1,19 @@
+@page "/CascadingParameterWithName"
+
+@using BlazorSample.Components.Shared
+
+<h3>複数のUIコンポーネントをまたいでパラメータを渡す（名前付きカスケーディングパラメーター）</h3>
+
+<p>複数のカスケーディングパラメータを渡したい時は名前付きにする必要があります</p>
+
+<CascadingValue Value="Message" Name="MessageForGrandChild">
+    <CascadingValue Value="Comment" Name="CommentForGrandChild">
+        <MyCascadingParameterWithNameChild />
+    </CascadingValue>
+</CascadingValue>
+
+@code
+{
+    private string Message { get; set; } = "Hello!";
+    private string Comment { get; set; } = "It looks good to me!";
+}

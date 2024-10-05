@@ -1,0 +1,19 @@
+@page "/onewaydatabinding2"
+
+<h3>一方向データバインディング</h3>
+
+<p>@CurrentTime</p>
+
+一方向データバインディングの変数の初期化は、OnInitialized() メソッド内でも行うことができます。
+OnInitialized() メソッドはRazorの描画のライフサイクルにおけるコンポーネントの初期化時にのみ呼び出されるメソッドです。
+
+@code
+{
+    private string CurrentTime = "";
+
+    protected override void OnInitialized()
+    {
+        CurrentTime = $"現在の時刻は {DateTime.Now} です。";
+    }
+}
+

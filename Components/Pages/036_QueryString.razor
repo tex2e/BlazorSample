@@ -1,0 +1,22 @@
+@page "/QueryString"
+@rendermode InteractiveServer
+
+<h3>URLのクエリパラメータの取得</h3>
+
+<p>
+    以下のURLにアクセスしてください <br />
+    <a href="/QueryString?param1=123&param2=test">/QueryString?param1=123&amp;param2=test</a>
+</p>
+
+<p>Param1: @Param1</p>
+<p>Param2: @Param2</p>
+
+@code
+{
+    [SupplyParameterFromQuery(Name = "param1")]
+    public string Param1 { get; set; } = "";
+
+    [SupplyParameterFromQuery(Name = "param2")]
+
+    public string Param2 { get; set; } = "";
+}

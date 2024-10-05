@@ -1,0 +1,28 @@
+@page "/JavaScriptConfirm"
+@rendermode InteractiveServer
+
+@inject IJSRuntime _JSRuntime
+
+<h3>JavaScript呼び出し</h3>
+
+<button @onclick="ScriptConfirm">確定</button>
+<p>@Message</p>
+
+@code
+{
+    private string Message { get; set; } = "";
+
+    private async Task ScriptConfirm()
+    {
+        // JavaScriptで「confirm("実行します。よろしいですか？")」を実行する
+        var res = await _JSRuntime.InvokeAsync<bool>("confirm", "実行します。よろしいですか？");
+        if (res)
+        {
+            Message = "起動しました。";
+        }
+        else
+        {
+            Message = "キャンセルしました。";
+        }
+    }
+}

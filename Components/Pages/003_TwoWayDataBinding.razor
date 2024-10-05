@@ -1,0 +1,12 @@
+@page "/twowaydatabinding"
+@rendermode InteractiveServer
+
+<h3>双方向データバインディング</h3>
+
+<input type="text" @bind="Name" @bind:event="oninput" placeholder="名前を入力">
+<p>こんにちは、@(Name)さん</p>
+
+@code
+{
+    private string Name { get; set; } = "名無し";
+}

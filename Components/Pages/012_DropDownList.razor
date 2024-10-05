@@ -1,0 +1,35 @@
+@page "/dropdownlist"
+@rendermode InteractiveServer
+
+<h3>ドロップダウンリストからデータを取得する</h3>
+
+<select @bind="selectedKey">
+    <option value="" selected hidden>選択してください</option>
+    @foreach (var item in selectList)
+    {
+        <option value="@item.Value">@item.Key</option>
+    }
+</select>
+<br /><br />
+<p>選択した項目名：@(selectList.FirstOrDefault(x => x.Value == selectedKey).Key)</p>
+<p>内容：@selectedKey</p>
+
+<h3>ドロップダウンリストへデータを反映する</h3>
+<select @bind="selectedKey" disabled>
+    <option value="" selected hidden>選択してください</option>
+    @foreach (var item in selectList)
+    {
+        <option value="@item.Value">@item.Key</option>
+    }
+</select>
+
+@code
+{
+    private string selectedKey = "";
+    Dictionary<string, string> selectList = new Dictionary<string, string>()
+    {
+        {"Red", "1"},
+        {"Green", "2"},
+        {"Blue", "3"},
+    };
+}

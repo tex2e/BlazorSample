@@ -1,0 +1,17 @@
+@page "/button"
+@rendermode InteractiveServer
+
+<h3>ボタンのイベントハンドラを設定する</h3>
+
+<button @onclick="IncrementCount">カウントアップ</button>
+<p>カウント：@Count</p>
+
+@code
+{
+    private int Count { get; set; } = 0;
+
+    private void IncrementCount()
+    {
+        Count++;
+    }
+}

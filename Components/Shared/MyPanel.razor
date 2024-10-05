@@ -1,0 +1,16 @@
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">@Title</h4>
+    @if (ChildContent != null)
+    {
+        <p>@ChildContent</p>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

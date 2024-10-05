@@ -1,0 +1,21 @@
+<button @onclick="OnButtonClicked" class="btn btn-primary @ButtonCss">@Text</button>
+
+@code
+{
+    private string ButtonCss { get; set; } = "";
+
+    [Parameter]
+    public string Text { get; set; } = "";
+
+    [Parameter]
+    public EventCallback OnClickCallback { get; set; }
+
+    private async Task OnButtonClicked()
+    {
+        // 子コンポーネント側での処理
+        ButtonCss = "disabled";  // 2回連続で実行されないように、ボタンのリンク機能を無効化する
+
+        // 呼び出し元から渡されたコールバック関数を呼び出す
+        await OnClickCallback.InvokeAsync();
+    }
+}

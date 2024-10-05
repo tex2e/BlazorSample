@@ -1,0 +1,13 @@
+<div class="alert alert-primary cascading-parameter-grandchild">
+    <p>メッセージ：@MessageForGrandChild</p>
+    <p>コメント：@CommentForGrandChild</p>
+</div>
+
+@code
+{
+    [CascadingParameter(Name = "MessageForGrandChild")]
+    public string MessageForGrandChild { get; set; } = "";
+
+    [CascadingParameter(Name = "CommentForGrandChild")]
+    public string CommentForGrandChild { get; set; } = "";
+}

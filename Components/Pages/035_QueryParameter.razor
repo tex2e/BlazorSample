@@ -1,0 +1,41 @@
+@page "/QueryParameter"
+@rendermode InteractiveServer
+
+@inject NavigationManager navigationManager
+
+<h3>URLのクエリパラメータの取得</h3>
+
+<p>
+    以下のURLにアクセスしてください（onclickで反映させる必要あり） <br />
+    <a href="/QueryParameter?param1=123&param2=test" @onclick="LoadParameters">/QueryParameter?param1=123&amp;param2=test</a>
+</p>
+
+<p>Param1: @Param1</p>
+<p>Param2: @Param2</p>
+
+@code
+{
+    [Parameter]
+    public string Param1 { get; set; } = "";
+
+    [Parameter]
+    public string Param2 { get; set; } = "";
+
+    protected override void OnInitialized()
+    {
+        // 画面初期表示時にクエリパラメータを取得する
+        LoadParameters();
+    }
+
+    private void LoadParameters()
+    {
+        var uri = new Uri(navigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+        Microsoft.Extensions.Primitives.StringValues param1;
+        Microsoft.Extensions.Primitives.StringValues param2;
+        query.TryGetValue("Param1", out param1);
+        query.TryGetValue("Param2", out param2);
+        Param1 = param1.ToString();
+        Param2 = param2.ToString();
+    }
+}
