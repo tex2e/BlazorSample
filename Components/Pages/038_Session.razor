@@ -12,19 +12,22 @@
 <input type="text" @bind="UserName" />
 <button @onclick="SaveUserName">保存</button>
 
-
 @code
 {
     private string? LastUserName { get; set; }
 
     private string? UserName { get; set; }
 
+    // ブラウザのDOMの更新が完了した後に実行されるメソッド
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        // セッションからユーザ名を取得する
         var result = await storage.GetAsync<string>("Session_UserName");
+        // セッションのユーザ名が取得できないときはデフォルト値を使用する
         LastUserName = result.Success ? result.Value : "（ゲスト）";
         if (firstRender)
         {
+            // 初回レンダリングのみ画面を再描画する
             this.StateHasChanged();
         }
         Console.WriteLine($"Get UserName: {LastUserName}");
@@ -35,6 +38,7 @@
         if (UserName != null)
         {
             LastUserName = UserName;
+            // 画面のユーザ名の入力値をセッションに保存する
             await storage.SetAsync("Session_UserName", LastUserName);
             Console.WriteLine($"Save UserName: {LastUserName}");
         }
