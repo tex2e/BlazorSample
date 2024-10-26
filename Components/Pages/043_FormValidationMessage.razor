@@ -1,0 +1,33 @@
+@page "/FormValidationMessage"
+@rendermode InteractiveServer
+@using BlazorSample.Models
+
+<h3>BlazorForm</h3>
+
+<p>@result</p>
+
+<EditForm Model="product" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    <div>
+        <div>名前</div>
+        <InputText @bind-Value=product.Name></InputText>
+        <ValidationMessage For="@(() => product.Name)" /> @* ここに入力時エラーが表示される *@
+    </div>
+    <div>
+        <div>価格</div>
+        <InputNumber @bind-Value=product.Price></InputNumber>
+        <ValidationMessage For="@(() => product.Price)" /> @* ここに入力時エラーが表示される *@
+    </div>
+    <button type="submit">確定</button>
+</EditForm>
+
+@code
+{
+    public Product product { get; set; } = new();
+    private string result = "";
+
+    private void OnSubmit()
+    {
+        result = "Complete!";
+    }
+}
